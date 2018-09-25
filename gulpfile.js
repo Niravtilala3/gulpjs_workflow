@@ -1,6 +1,7 @@
 
 var gulp = require('gulp'),
     gutil = require('gulp-util')
+    pug = require('gulp-pug'),
     minifyCSS = require('gulp-csso'),
 	concat = require('gulp-concat'),
 	del = require('del');
@@ -8,6 +9,14 @@ var gulp = require('gulp'),
 // say hi using gulp
 gulp.task('hi',function(){
 	gutil.log("Hi");
+});
+
+
+// create html by using pub templating engine
+gulp.task('html', function(){
+	return gulp.src('./pug/*.pug')
+		.pipe(pug())
+		.pipe(gulp.dest('build/html'));
 });
 
 
@@ -26,4 +35,4 @@ gulp.task('clean', function(){
 });
 
 
-gulp.task('default', [ 'hi','css']);
+gulp.task('default', [ 'hi','html','css']);

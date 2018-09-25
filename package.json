@@ -8,7 +8,11 @@
     "type": "git",
     "url": "git+https://github.com/Niravtilala3/gulpjs_workflow.git"
   },
-  "keywords": ["gulp","gulp example","gulp demo"],
+  "keywords": [
+    "gulp",
+    "gulp example",
+    "gulp demo"
+  ],
   "author": "niravtilala3@gmail.com",
   "license": "MIT",
   "bugs": {
@@ -19,6 +23,7 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
+    "gulp-pug": "^4.0.1",
     "gulp-util": "^3.0.8"
   }
 }
