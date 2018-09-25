@@ -1,10 +1,11 @@
-
+// libs
 var gulp = require('gulp'),
     gutil = require('gulp-util')
     pug = require('gulp-pug'),
     less = require('gulp-less'),
     minifyCSS = require('gulp-csso'),
-	concat = require('gulp-concat'),
+    concat = require('gulp-concat'),
+    sourcemaps = require('gulp-sourcemaps'),
 	del = require('del');
 
 // say hi using gulp
@@ -40,10 +41,20 @@ gulp.task('less',function(){
 });
 
 
+// concate js files
+gulp.task('js', function(){
+	return gulp.src('js/*.js')
+		.pipe(sourcemaps.init())
+		.pipe(concat('main.min.js'))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('build/js'))
+});
+
+
 //delete build folder.
 gulp.task('clean', function(){ 
 	del(['build'])
 });
 
 
-gulp.task('default', [ 'hi','html','css','less']);
+gulp.task('default', [ 'hi','html','css','less','js']);
