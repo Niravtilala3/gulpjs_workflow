@@ -1,0 +1,22 @@
+{
+  "name": "gulpjs_workflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niravtilala3/gulpjs_workflow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Niravtilala3/gulpjs_workflow/issues"
+  },
+  "homepage": "https://github.com/Niravtilala3/gulpjs_workflow#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8"
+  }
+}
