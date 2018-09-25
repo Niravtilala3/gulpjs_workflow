@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-csso'),
     concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
+    imageMin = require('gulp-imagemin'),
 	del = require('del');
 
 // say hi using gulp
@@ -50,6 +51,30 @@ gulp.task('js', function(){
 		.pipe(gulp.dest('build/js'))
 });
 
+//image optimzation
+gulp.task('image', function () {
+	return gulp.src('./uploads/**/*')
+		//image-minify start here
+		.pipe(imageMin([
+			//gif minify
+			imageMin.gifsicle({interlaced: true}),
+			//jpg minify
+			imageMin.jpegtran({progressive: true}),
+			//png minify
+			imageMin.optipng({optimizationLevel: 5}),
+			//svg minify
+			imageMin.svgo({
+				plugins: [
+					{removeViewBox: true},
+					{cleanupIDs: false}
+				]
+			})
+			// print output in console
+			],{verbose: true}))
+			 //place all files in destination folder
+			.pipe(gulp.dest('./build/images/'));
+});
+
 
 //delete build folder.
 gulp.task('clean', function(){ 
@@ -57,4 +82,4 @@ gulp.task('clean', function(){
 });
 
 
-gulp.task('default', [ 'hi','html','css','less','js']);
+gulp.task('default', [ 'hi','html','css','less','js','image']);
