@@ -2,6 +2,7 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util')
     pug = require('gulp-pug'),
+    less = require('gulp-less'),
     minifyCSS = require('gulp-csso'),
 	concat = require('gulp-concat'),
 	del = require('del');
@@ -20,12 +21,22 @@ gulp.task('html', function(){
 });
 
 
-// minfide and concat css files
+// minified and concate css files
 gulp.task('css',function(){
 	return gulp.src('./css/*.css')
 		.pipe(minifyCSS())
 		.pipe(concat('main.min.css'))
-		.pipe(gulp.dest('build/css'))
+		.pipe(gulp.dest('build/css'));
+});
+
+
+// compile and concate less files to css
+gulp.task('less',function(){
+	return gulp.src('./less/*.less')
+		.pipe(less())
+		.pipe(minifyCSS())
+		.pipe(concat('main.min.css'))
+		.pipe(gulp.dest('build/css'));
 });
 
 
@@ -35,4 +46,4 @@ gulp.task('clean', function(){
 });
 
 
-gulp.task('default', [ 'hi','html','css']);
+gulp.task('default', [ 'hi','html','css','less']);
