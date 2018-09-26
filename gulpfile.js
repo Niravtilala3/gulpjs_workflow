@@ -1,6 +1,5 @@
 // libs
 var gulp = require('gulp'),
-    gutil = require('gulp-util')
     pug = require('gulp-pug'),
     less = require('gulp-less'),
     minifyCSS = require('gulp-csso'),
@@ -8,11 +7,6 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     imageMin = require('gulp-imagemin'),
 	del = require('del');
-
-// say hi using gulp
-gulp.task('hi',function(){
-	gutil.log("Hi");
-});
 
 
 // create html by using pub templating engine
@@ -82,4 +76,4 @@ gulp.task('clean', function(){
 });
 
 
-gulp.task('default', [ 'hi','html','css','less','js','image']);
+gulp.task('default', ['html','css','less','js','image']);
